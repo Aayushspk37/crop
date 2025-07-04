@@ -6,9 +6,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Home - Crop Recommendation</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style> 
+   .navbar-green {
+  background-color: #198754;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-toggler {
+  background-color: rgb(78, 126, 78);
+  border: none;
+}
+
+.navbar-nav .nav-link {
+  color: #fff !important;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-item.active .nav-link {
+  background-color: #14532d;
+  border-radius: 6px;
+}
+
+.dropdown-menu {
+  background-color: #f0fdf4;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+  color: #1e3a8a;
+  font-weight: 500;
+}
+
+.dropdown-item:hover {
+  background-color: #bbf7d0;
+  color: #065f46;
+}
+
+.welcome-user {
+  color: #e0f2f1;
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+
+    .welcome-container {
+        background-color:rgb(235, 228, 228);
+        padding: 40px;
+        margin: 5px auto;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(199, 250, 215, 0.1);
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .welcome-container p {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+         
+
+    }
+
+    .welcome-container a {
+        color:rgb(168, 239, 199);
+        font-weight: bold;
+        text-decoration: none;
+        
+    }
+
+    .welcome-container a:hover {
+        text-decoration: underline;
+    }
+    .btn-primary {
+    padding: 0.75rem 2rem;
+    background-color:rgb(23, 141, 64);
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin:10px;
+    margin-bottom:5px;
+   margin-top: 5px;
+    text-decoration: none;
+}
+.navbar-green h1.nepali-text {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Khand', sans-serif; /* or any Nepali-supporting font */
+}
+.welcome-user {
+  color: #e0f2f1;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.welcome-user:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  cursor: default;
+}
+
+/* Navigation menu inside Quick Links */
+.footer-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-nav-link {
+  text-decoration: none;
+  color: rgb(37, 39, 37);
+  font-weight: bold;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav-link:hover {
+  color: green;
+}
  body {
+    
     font-family: 'Segoe UI', Tahoma, sans-serif;
     background-color: #f2f8f2;
     margin: 0;
@@ -30,6 +163,43 @@ h2 {
     margin-top: 25px;
     font-size: 22px;
 }
+.content-flex {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        gap: 20px;
+        /* space between image and text */
+    }
+
+    .content-flex img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .zoom-img {
+        transition: transform 0.3s ease;
+    }
+
+    .zoom-img:hover {
+        transform: scale(1.1);
+    }
+
+
+    .content-flex p {
+        flex: 1;
+    }
+    .content-flex1{
+         display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .content-flex1 img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
 
 p {
     margin-bottom: 16px;
@@ -37,44 +207,105 @@ p {
     color: #333;
 }
 
+
 </style>
 <body>
     {% block body %}
-    <header>
-        <h1>Crop Recommendation System</h1>
-    </header>
-    <nav>
-        <a href="/shop/home/">Home</a>
-        <a href="/shop/about/">About</a>
-        <a href="/shop/service/">Services</a>
-        <a href="/shop/contactus/">Contact Us</a>
-        <a href="/shop/login/">Log Out</a>
-    </nav>
-    <div class="container">
+   
+    
+<nav class="navbar navbar-expand-lg navbar-green">
+  <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap">
+
+    <!-- Logo -->
+    <a class="navbar-brand nepali-text text-white" href="#">हाम्रो कृषि</a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links + welcome -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item {% if request.path == '/shop/home/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/home/">Home</a>
+        </li>
+        <li class="nav-item {% if request.path == '/shop/service/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/service/">Services</a>
+        </li>
+        <li class="nav-item {% if request.path == '/shop/contactus/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/contactus/">Contact Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            More
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/shop/history/">History</a></li>
+            <li><a class="dropdown-item" href="/shop/about/">About</a></li>
+          </ul>
+        </li>
+        <li class="nav-item {% if request.path == '/shop/login/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/login/">Logout</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Welcome text (only if user is authenticated) -->
+    {% if user.is_authenticated %}
+      <span class="navbar-text welcome-user mt-2 mt-lg-0 ms-3">
+        Welcome {{ request.user.username }}
+      </span>
+    {% endif %}
+  </div>
+</nav>
+
+<script>
+  setTimeout(function() {
+    var flash = document.getElementById('flash-message');
+    if (flash) {
+      flash.style.display = 'none';
+    }
+  }, 3000); 
+  
+</script>
+
+
+<div class="container">
         <section>
-            <h2>Who We Are</h2>
-            <p>
-                We are a multidisciplinary team of researchers, software developers, and agricultural professionals committed to enhancing decision-making in farming through the use of advanced technologies. The Crop Recommendation System is a product of collaboration between experts in artificial intelligence, agronomy, and environmental sciences who share a common goal: to simplify and improve agricultural planning using data-driven insights.
-            </p>
+            <h2 class="center-text">Who We Are</h2>
+
+            <div class="content-flex">
+                <img src="{% static 'shop/agricl.png' %}" class="zoom-img" alt="crop image" width="350px" />
+
+                <p>
+                    We are a multidisciplinary team of researchers, software developers, and agricultural
+                    professionals committed to enhancing decision-making in farming through the use of advanced
+                    technologies. The Crop Recommendation System is a product of collaboration between experts in
+                    artificial intelligence, agronomy, and environmental sciences who share a common goal: to
+                    simplify and improve agricultural planning using data-driven insights.
+                </p>
+            </div>
         </section>
 
-        <section>
-            <h2>Our Mission</h2>
-            <p>
-                Our mission is to promote smart, sustainable agriculture by equipping farmers with accurate and timely crop recommendations. We aim to bridge the gap between traditional farming practices and modern technologies by delivering tools that are both accessible and reliable. Through our system, we strive to reduce uncertainty in crop selection and help farmers increase yield, conserve resources, and contribute to long-term food security.
-            </p>
-        </section>
 
         <section>
-            <h2>What We Do</h2>
-            <p>
-                The Crop Recommendation System uses machine learning algorithms trained on verified agricultural datasets to provide crop suggestions based on user inputs such as soil type, nutrient levels, and weather conditions. Our platform processes this information and generates tailored crop recommendations to optimize land usage. By harnessing real-world data from sources like Kaggle and local agricultural studies, we ensure that our recommendations are both practical and relevant
-            </p>
+            <h2 class="center-text">Our Mission</h2>
+
+            <div class="content-flex1">
+                <img src="{% static 'shop/agricl.png' %}" class="zoom-img" alt="crop image" width="350px" />
+
+                <p>
+                    We are a multidisciplinary team of researchers, software developers, and agricultural
+                    professionals committed to enhancing decision-making in farming through the use of advanced
+                    technologies. The Crop Recommendation System is a product of collaboration between experts in
+                    artificial intelligence, agronomy, and environmental sciences who share a common goal: to
+                    simplify and improve agricultural planning using data-driven insights.
+                </p>
+            </div>
         </section>
-<section> 
-    <h2>Our Vision </h2>
-    <p> We envision a future where every farmer—regardless of location or resources—has access to intelligent, affordable, and easy-to-use technology that enhances productivity and ensures food security. Through innovation and research, we aspire to support a global agricultural system that is environmentally responsible and economically viable.</p>
-</section>
         <section>
             <h2>Our Team</h2>
             <p>
@@ -83,10 +314,10 @@ p {
             </p>
         </section>
     </div>
-    <footer>
-        &copy; 2025 Crop AI. All rights reserved. <a href="/shop/terms/" style="color:white">Terms &
-                Privacy</a>
-    </footer>
+    {%include 'shop/Footer.html'%}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     {% endblock %}
 </body>
 </html>

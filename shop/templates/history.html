@@ -1,0 +1,240 @@
+css :
+  /* General navbar style */
+.navbar-green {
+  background-color: #198754; /* Bootstrap green */
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-green h1.nepali-text {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Khand', sans-serif; /* or any Nepali-supporting font */
+}
+
+/* Nav items */
+.navbar-green .navbar-nav {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual nav link */
+.navbar-green .nav-link {
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  border-radius: 6px;
+}
+
+.navbar-green .nav-link:hover,
+.navbar-green .nav-item.active .nav-link {
+  background-color: #14532d;
+  color: #e0f2f1;
+}
+
+/*for mobile */
+.navbar-toggler {
+  background-color:rgb(78, 126, 78);
+  border: 5;
+  border-color:black;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  display: none; 
+}
+
+/* Responsive collapse */
+@media (max-width: 768px) {
+  .navbar-green {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-green .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .navbar-green .nav-link {
+    width: 100%;
+    text-align: left;
+  }
+
+  .navbar-toggler {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+    .welcome-container {
+        background-color:rgb(235, 228, 228);
+        padding: 40px;
+        margin: 5px auto;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(199, 250, 215, 0.1);
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .welcome-container p {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+         
+
+    }
+
+    .welcome-container a {
+        color:rgb(168, 239, 199);
+        font-weight: bold;
+        text-decoration: none;
+        
+    }
+
+    .welcome-container a:hover {
+        text-decoration: underline;
+    }
+    .btn-primary {
+    padding: 0.75rem 2rem;
+    background-color:rgb(23, 141, 64);
+    color: white;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin:10px;
+    margin-bottom:5px;
+   margin-top: 5px;
+    text-decoration: none;
+}
+.welcome-user {
+  color: #e0f2f1;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.welcome-user:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  cursor: default;
+}
+
+/* Entire dropdown menu box */
+.navbar-green .dropdown-menu {
+  background-color: #e6f4ea; /* light green background */
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  margin-top: 0.5rem;
+}
+
+/* Each individual item inside dropdown */
+.navbar-green .dropdown-menu .dropdown-item {
+  color: #1e3a8a; /* deep blue text */
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for each item */
+.navbar-green .dropdown-menu .dropdown-item:hover {
+  background-color: #c7f2d0; /* soft green hover */
+  color: #065f46; /* dark green text */
+}
+
+/* Navigation menu inside Quick Links */
+.footer-nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-nav-link {
+  text-decoration: none;
+  color: rgb(37, 39, 37);
+  font-weight: bold;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav-link:hover {
+  color: green;
+}
+
+
+<nav class="navbar navbar-expand-lg navbar-green">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <h1 class="navbar-brand nepali-text text-white mb-0">हाम्रो कृषि</h1>
+
+    <!-- Toggle button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible navbar content -->
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item {% if request.path == '/shop/home/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/home/">Home</a>
+        </li>
+        <li class="nav-item {% if request.path == '/shop/service/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/service/">Services</a>
+        </li>
+        <li class="nav-item {% if request.path == '/shop/contactus/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/contactus/">Contact Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            More
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/shop/history/">History</a></li>
+            <li><a class="dropdown-item" href="/shop/about/">About</a></li>
+          </ul>
+        </li>
+        <li class="nav-item {% if request.path == '/shop/login/' %}active{% endif %}">
+          <a class="nav-link text-white" href="/shop/login/">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {% if user.is_authenticated %}
+    <span class="navbar-text welcome-user ms-lg-3 mt-2 mt-lg-0">
+       Welcome {{ request.user.username }}
+    </span>
+  {% endif %}
+</div>
+</nav>
+
+<script>
+  setTimeout(function() {
+    var flash = document.getElementById('flash-message');
+    if (flash) {
+      flash.style.display = 'none';
+    }
+  }, 3000); 
+  
+</script>
+

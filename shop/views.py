@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.conf import settings
-from .models import product,contact,crop_recommend
+from .models import contact,crop_recommend,CropDetail
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login as ln,logout
 from django.contrib import messages
-import joblib,os, numpy as np,json
+import joblib,os
 
 def index(request):
     return render(request,'shop/index.html')
@@ -51,6 +51,7 @@ label_encoder = joblib.load(LABEL_ENCODER_PATH)
 @login_required
 def Crop_recommend(request):
     crop = None
+    crop_detail = None
     history = crop_recommend.objects.filter(user=request.user).order_by('-timestamp')
     if request.method == 'POST':
         try:
@@ -80,6 +81,11 @@ def Crop_recommend(request):
             rainfall=rainfall,
             predicted_crop=crop
         )
+            try:
+                crop_detail = CropDetail.objects.get(name__iexact=crop)
+            except CropDetail.DoesNotExist:
+                crop_detail = None
+            
 
         except Exception as e:
             crop = f"Error: {e}"
@@ -88,6 +94,7 @@ def Crop_recommend(request):
 
     context = {
         'crop': crop,
+        'crop_detail': crop_detail,
         'N': request.POST.get('N', 60),
         'P': request.POST.get('P', 30),
         'K': request.POST.get('K', 30),
@@ -109,7 +116,7 @@ def user_login(request):
         
         if user is not None:
             ln(request,user)
-            messages.success(request,"Successfully Logged In. Welcome!!")
+            messages.success(request,"Successfully Logged In. Welcome ")
             return redirect('/shop/service/')
         else:
             messages.error(request,'Invalid Credentials. Please Enter Valid Credentials.')
@@ -120,7 +127,7 @@ def user_logout(request):
     if request.method=='POST':
         logout(request)
         messages.success(request,"successfully logout")
-        return redirect('shop:home')
+        return redirect('shop:login')
 
 def user_signup(request):
     if request.method=='POST':
@@ -145,7 +152,7 @@ def user_signup(request):
         myuser.save()
         
         messages.success(request,'your account has been logged in')
-        return redirect('shop:service')
+        return redirect('shop:login')
     else:
         return render(request, 'shop/signup.html')
           
